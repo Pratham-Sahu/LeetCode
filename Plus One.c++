@@ -11,6 +11,8 @@ public:
                 digits[i]=0;
                 digits[i-1]+=1;
             }
+            else
+                break;
         }
         if(digits.front()==0)
             digits.erase(digits.begin());
