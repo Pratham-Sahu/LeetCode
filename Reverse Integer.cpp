@@ -1,22 +1,22 @@
 class Solution {
 public:
     int reverse(int x) {
-        int r=0,num;
-        if(x==INT_MIN) 
-            return 0;
-
-        if(x<0)
-            num=x*(-1);
-        else
-            num=x;
-        while(num!=0){
-            if( r>(INT_MAX/10) || r>( (INT_MAX/10)+num%10) ) 
+        int reversed = 0;
+        
+        while (x != 0) {
+            int pop = x % 10;
+            
+            if (reversed > INT_MAX / 10 || (reversed == INT_MAX / 10 && pop > 7)) {
                 return 0;
-            r=r*10 + num%10;
-            num=num/10;
+            }
+            if (reversed < INT_MIN / 10 || (reversed == INT_MIN / 10 && pop < -8)) {
+                return 0;
+            }
+            
+            reversed = reversed * 10 + pop;
+            x /= 10;
         }
-        if(x<0)
-            return r*(-1);
-        return r;
+        
+        return reversed;
     }
 };
