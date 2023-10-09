@@ -17,3 +17,17 @@ public:
         return {l,r};
     }
 };
+
+//OR
+
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target) {
+        auto i=find(nums.begin(),nums.end(),target);
+        if(i==nums.end())
+            return {-1,-1};
+        int l=distance(nums.begin(),i);
+        int n=count(nums.begin(),nums.end(),target);
+        return {l,l+n-1};
+    }
+};
